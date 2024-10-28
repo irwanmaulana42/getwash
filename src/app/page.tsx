@@ -3,14 +3,18 @@
 import {
   Box,
   Button,
+  Card,
+  CardBody,
+  CardHeader,
   Grid,
   GridItem,
   Heading,
   Input,
+  Stack,
   Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { TimeIcon, AtSignIcon, RepeatIcon } from "@chakra-ui/icons"; // Menggunakan icon dari Chakra UI
+import { TimeIcon, AtSignIcon, RepeatIcon, EmailIcon, ArrowForwardIcon, ArrowLeftIcon, ArrowBackIcon } from "@chakra-ui/icons"; // Menggunakan icon dari Chakra UI
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -225,113 +229,176 @@ export default function Home() {
             </Heading>
           </GridItem>
           <GridItem colSpan={{ base: 12, md: 6 }}>
-            <Text fontSize="md" fontWeight={"500"} color="gray.600">
-              Kami berkomitmen untuk memberikan layanan terbaik, mengutamakan
-              kualitas, ketepatan waktu, dan kepuasan pelanggan. Kami memastikan
-              pakaian Anda siap dipakai kembali dengan sempurna.
-            </Text>
+            <Stack direction='row' spacing={4} justifyContent={"end"}>
+              <Button borderRadius={50} height={50} variant={"outline"}>
+                <ArrowBackIcon />
+              </Button>
+              <Button borderRadius={50} height={50}
+                backgroundColor={"#f94a1f"}
+                color={"#feebe6"}
+                _hover={{
+                  background: "#fe8a65",
+                }}>
+                <ArrowForwardIcon />
+              </Button>
+            </Stack>
           </GridItem>
         </Grid>
         <Swiper
-          slidesPerView={3}
+          slidesPerView={4}
           spaceBetween={30}
           pagination={{
             clickable: true,
+            renderBullet: function () {
+              return "";
+            }
           }}
+          loop={true}
           modules={[Pagination]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              style={{ width: "100%", height: "auto" }}
-              src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-              alt=""
-              loading="lazy"
-              width={100}
-              height={100}
-            />
-          </SwiperSlide>
+          {
+            [1, 2, 3, 4, 5].map((item, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Box textAlign={'left'} padding={5}>
+                    <Card borderRadius={15}>
+                      <Image
+                        style={{ width: "100%", height: "auto", borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
+                        src={"https://swiperjs.com/demos/images/nature-8.jpg"}
+                        alt=""
+                        loading="lazy"
+                        width={100}
+                        height={100}
+                      />
+                      <CardBody>
+                        <Stack spacing='3'>
+                          <Heading size='md'>Wet Cleaning</Heading>
+                          <Text fontSize="md" fontWeight={"500"} color="gray.600">
+                            Menjaga Konsistensi Fabric & Warna Pakaian
+                          </Text>
+                        </Stack>
+
+                      </CardBody>
+                    </Card>
+                  </Box>
+                </SwiperSlide>
+              )
+            })
+          }
         </Swiper>
+
+        <Box
+          justifyContent={"center"}
+          display={"flex"}
+          mt={3}>
+          <Button
+            backgroundColor={"#f94a1f"}
+            color={"#feebe6"}
+            size="lg"
+            borderRadius={30}
+            width={"3xs"}
+            _hover={{
+              background: "#fe8a65",
+            }}
+          >
+            <Text fontSize={"md"}>Lihat Semua</Text>
+          </Button>
+
+        </Box>
+      </Box>
+
+
+      <Box padding={20}>
+        <Grid
+          templateColumns={{ base: "1fr", md: "repeat(12, 1fr)" }}
+          gap={4}
+          justifyContent={"center"}
+          display={"flex"}
+          paddingBottom={4}
+        >
+          <GridItem colSpan={{ base: 12, md: 12 }}>
+            <Heading fontSize={16} fontWeight={700} letterSpacing={"wide"} color={"#f94a1f"}  >
+              STEP PAKAIAN ANDA DICUCI
+            </Heading>
+          </GridItem>
+        </Grid>
+
+        <Grid
+          templateColumns={{ base: "1fr", md: "repeat(12, 1fr)" }}
+          gap={4}
+          paddingBottom={10}
+          justifyContent={"center"}
+          display={"flex"}
+        >
+          <GridItem colSpan={{ base: 12, md: 12 }}>
+            <Heading fontSize={40} fontWeight={"bold"} paddingBottom={5}>
+              Bisnis Proses Laundry
+            </Heading>
+          </GridItem>
+        </Grid>
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+            renderBullet: function () {
+              return "";
+            }
+          }}
+          loop={true}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {
+            [1, 2, 3, 4, 5].map((item, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Box textAlign={'left'} padding={5}>
+                    <Card borderRadius={15}>
+                      <Image
+                        style={{ width: "100%", height: "auto", borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
+                        src={"https://swiperjs.com/demos/images/nature-8.jpg"}
+                        alt=""
+                        loading="lazy"
+                        width={100}
+                        height={100}
+                      />
+                      <CardBody>
+                        <Stack spacing='3'>
+                          <Heading size='md'>Wet Cleaning</Heading>
+                          <Text fontSize="md" fontWeight={"500"} color="gray.600">
+                            Menjaga Konsistensi Fabric & Warna Pakaian
+                          </Text>
+                        </Stack>
+
+                      </CardBody>
+                    </Card>
+                  </Box>
+                </SwiperSlide>
+              )
+            })
+          }
+        </Swiper>
+
+        <Box
+          justifyContent={"center"}
+          display={"flex"}
+          mt={3}>
+          <Button
+            backgroundColor={"#f94a1f"}
+            color={"#feebe6"}
+            size="lg"
+            borderRadius={30}
+            width={"3xs"}
+            _hover={{
+              background: "#fe8a65",
+            }}
+          >
+            <Text fontSize={"md"}>Lihat Semua</Text>
+          </Button>
+
+        </Box>
       </Box>
     </>
   );
