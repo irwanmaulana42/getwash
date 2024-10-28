@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["*"],
-    }
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'swiperjs.com',
+            port: '',
+          },
+        ],
+      },    
 };
 
 export default nextConfig;

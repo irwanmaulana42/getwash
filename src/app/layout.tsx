@@ -3,6 +3,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ReactNode } from "react";
 import { fonts } from "./fonts";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import './assets/css/index.css';
 
 interface LayoutProps {
   children: ReactNode;
