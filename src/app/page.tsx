@@ -11,7 +11,17 @@ import {
   Heading,
   Input,
   Stack,
+  Step,
+  StepDescription,
+  StepIcon,
+  StepIndicator,
+  StepNumber,
+  Stepper,
+  StepSeparator,
+  StepStatus,
+  StepTitle,
   Text,
+  useSteps,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { TimeIcon, AtSignIcon, RepeatIcon, EmailIcon, ArrowForwardIcon, ArrowLeftIcon, ArrowBackIcon } from "@chakra-ui/icons"; // Menggunakan icon dari Chakra UI
@@ -20,8 +30,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+import { useEffect } from "react";
+
+const steps = [
+  { title: 'Pickup Lundry', description: 'Kurir mengambil laundryan Anda' },
+  { title: 'Filter', description: 'Kurir mengambil laundryan Anda' },
+  { title: 'Prewash', description: 'Kurir mengambil laundryan Anda' },
+  { title: 'Washing', description: 'Kurir mengambil laundryan Anda' },
+];
 
 export default function Home() {
+  const { activeStep, setActiveStep } = useSteps({
+    index: 0,
+    count: steps.length,
+  });
+
+
   return (
     <>
       <Box>
@@ -265,11 +289,11 @@ export default function Home() {
                     <Card borderRadius={15}>
                       <Image
                         style={{ width: "100%", height: "auto", borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
-                        src={"https://swiperjs.com/demos/images/nature-8.jpg"}
+                        src={"/assets/images/image-1.png"}
                         alt=""
                         loading="lazy"
-                        width={100}
-                        height={100}
+                        width={300}
+                        height={300}
                       />
                       <CardBody>
                         <Stack spacing='3'>
@@ -337,49 +361,42 @@ export default function Home() {
             </Heading>
           </GridItem>
         </Grid>
-        <Swiper
-          slidesPerView={4}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-            renderBullet: function () {
-              return "";
-            }
-          }}
-          loop={true}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          {
-            [1, 2, 3, 4, 5].map((item, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <Box textAlign={'left'} padding={5}>
-                    <Card borderRadius={15}>
-                      <Image
-                        style={{ width: "100%", height: "auto", borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
-                        src={"https://swiperjs.com/demos/images/nature-8.jpg"}
-                        alt=""
-                        loading="lazy"
-                        width={100}
-                        height={100}
-                      />
-                      <CardBody>
-                        <Stack spacing='3'>
-                          <Heading size='md'>Wet Cleaning</Heading>
-                          <Text fontSize="md" fontWeight={"500"} color="gray.600">
-                            Menjaga Konsistensi Fabric & Warna Pakaian
-                          </Text>
-                        </Stack>
 
-                      </CardBody>
-                    </Card>
+        <Grid
+          templateColumns={{ base: "1fr", md: "repeat(12, 1fr)" }}
+          gap={4}
+        >
+          <GridItem colSpan={{ base: 12, md: 6 }}>
+            <Stepper index={activeStep} colorScheme="red" orientation='vertical' height='400px' gap='0'>
+              {steps.map((step, index) => (
+                <Step key={index} onClick={() => setActiveStep(index)}>
+                  <StepIndicator>
+                    <StepStatus
+                      complete={<StepIcon />}
+                      incomplete={<StepNumber />}
+                      active={<StepNumber />}
+                    />
+                  </StepIndicator>
+
+                  <Box flexShrink='0'>
+                    <StepTitle>{step.title}</StepTitle>
+                    <StepDescription>{step.description}</StepDescription>
                   </Box>
-                </SwiperSlide>
-              )
-            })
-          }
-        </Swiper>
+                  <StepSeparator />
+                </Step>
+              ))}
+            </Stepper>
+          </GridItem>
+          <GridItem colSpan={{ base: 12, md: 6 }}>
+            <Image
+              src={"/assets/images/Image_5.png"}
+              alt=""
+              width={500}
+              height={500}
+            />
+          </GridItem>
+        </Grid>
+
 
         <Box
           justifyContent={"center"}
@@ -399,6 +416,129 @@ export default function Home() {
           </Button>
 
         </Box>
+      </Box>
+
+      <Box padding={20} background={"#fdf2ef"} backgroundImage={"/assets/images/Group 1000004392.png"} backgroundRepeat={"no-repeat"} backgroundSize={'cover'}>
+        <Grid
+          templateColumns={{ base: "1fr", md: "repeat(12, 1fr)" }} // 1 kolom untuk mobile, 12 kolom untuk medium screen
+          gap={4}
+          paddingBottom={10}
+        >
+          <GridItem colSpan={{ base: 12, md: 6 }}>
+            <Heading fontSize={40} fontWeight={"bold"} paddingBottom={5}>
+              Selalu Memberikan <br /> Pelayanan Terbaik
+            </Heading>
+          </GridItem>
+          <GridItem colSpan={{ base: 12, md: 6 }}>
+            <Text fontSize="md" fontWeight={"500"} color="gray.600">
+              Kami berkomitmen untuk memberikan layanan terbaik, mengutamakan
+              kualitas, ketepatan waktu, dan kepuasan pelanggan. Kami memastikan
+              pakaian Anda siap dipakai kembali dengan sempurna.
+            </Text>
+          </GridItem>
+        </Grid>
+
+        <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8}>
+          <GridItem colSpan={{ base: 3, lg: 1 }}>
+            <Box
+              padding={6}
+              paddingTop={10}
+              // marginRight={12}
+              background="white"
+              boxShadow="lg"
+              borderRadius="3xl"
+              textAlign="center"
+              height={300}
+            >
+              <TimeIcon boxSize={10} color="#ff5722" marginBottom={4} />{" "}
+              {/* Gunakan TimeIcon langsung */}
+              <Heading
+                height={58}
+                fontSize={25}
+                fontWeight="bold"
+                marginBottom={2}
+              >
+                Hemat Waktu <br /> & Uang
+              </Heading>
+              <Text
+                marginTop={5}
+                fontSize="md"
+                fontWeight={"500"}
+                color="gray.600"
+              >
+                Tidak perlu lagi menyiakan waktu untuk pergi ke laundry. Layanan
+                pengambilan dan pengantaran kami gratis!
+              </Text>
+            </Box>
+          </GridItem>
+          <GridItem colSpan={{ base: 3, lg: 1 }}>
+            <Box
+              padding={6}
+              paddingTop={10}
+              // marginRight={12}
+              // marginLeft={12}
+              background="white"
+              boxShadow="lg"
+              borderRadius="3xl"
+              textAlign="center"
+              height={300}
+            >
+              <AtSignIcon boxSize={10} color="#ff5722" marginBottom={4} />{" "}
+              {/* Gunakan AtSignIcon */}
+              <Heading
+                height={58}
+                fontSize={25}
+                fontWeight="bold"
+                marginBottom={2}
+              >
+                Pembayaran <br /> Instan
+              </Heading>
+              <Text
+                marginTop={5}
+                fontSize="md"
+                fontWeight={"500"}
+                color="gray.600"
+              >
+                Nikmati kemudahan pembayaran instan dengan satu genggaman.
+              </Text>
+            </Box>
+          </GridItem>
+          <GridItem colSpan={{ base: 3, lg: 1 }}>
+            <Box
+              padding={6}
+              paddingTop={10}
+              background="white"
+              boxShadow="lg"
+              // marginLeft={12}
+              borderRadius="3xl"
+              textAlign="center"
+              height={300}
+            >
+              {" "}
+              <RepeatIcon boxSize={10} color="#ff5722" marginBottom={4} />{" "}
+              {/* Gunakan RepeatIcon */}
+              <Heading
+                height={58}
+                fontSize={25}
+                alignContent={"center"}
+                alignItems={"center"}
+                fontWeight="bold"
+                marginBottom={2}
+              >
+                Eco-Friendly
+              </Heading>
+              <Text
+                marginTop={5}
+                fontSize="md"
+                fontWeight={"500"}
+                color="gray.600"
+              >
+                Deterjen cair lembut/gentle yang akan menjaga pakaian anda tetap
+                bersih cemerlang.
+              </Text>
+            </Box>
+          </GridItem>
+        </Grid>
       </Box>
     </>
   );
