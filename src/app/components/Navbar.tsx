@@ -13,7 +13,7 @@ import {
   Collapse,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -45,94 +45,94 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-          <NextLink href="/" passHref>
+          <Link href="/" passHref>
             <Button variant="link" color={activeColor} fontWeight="bold">
               Home
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/about" passHref>
+          <Link href="/about" passHref>
             <Button variant="link" color={linkColor}>
               About Us
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/services" passHref>
+          <Link href="/services" passHref>
             <Button variant="link" color={linkColor}>
               Services
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/news" passHref>
+          <Link href="/news" passHref>
             <Button variant="link" color={linkColor}>
               News
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/tracking" passHref>
+          <Link href="/tracking" passHref>
             <Button variant="link" color={linkColor}>
               Tracking
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/faq" passHref>
+          <Link href="/faq" passHref>
             <Button variant="link" color={linkColor}>
               FAQ
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/contact" passHref>
+          <Link href="/contact" passHref>
             <Button variant="link" color={linkColor}>
               Contacts
             </Button>
-          </NextLink>
+          </Link>
         </HStack>
       </Flex>
 
       {/* Mobile Menu */}
       <Collapse in={isOpen} animateOpacity>
         <VStack as={'nav'} spacing={4} display={{ md: 'none' }} mt={4}>
-          <NextLink href="/" passHref>
+          <Link href="/" passHref>
             <Button variant="link" color={activeColor} fontWeight="bold">
               Home
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/about" passHref>
+          <Link href="/about" passHref>
             <Button variant="link" color={linkColor}>
               About Us
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/services" passHref>
+          <Link href="/services" passHref>
             <Button variant="link" color={linkColor}>
               Services
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/news" passHref>
+          <Link href="/news" passHref>
             <Button variant="link" color={linkColor}>
               News
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/tracking" passHref>
+          <Link href="/tracking" passHref>
             <Button variant="link" color={linkColor}>
               Tracking
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/faq" passHref>
+          <Link href="/faq" passHref>
             <Button variant="link" color={linkColor}>
               FAQ
             </Button>
-          </NextLink>
+          </Link>
 
-          <NextLink href="/contact" passHref>
+          <Link href="/contact" passHref>
             <Button variant="link" color={linkColor}>
               Contacts
             </Button>
-          </NextLink>
+          </Link>
         </VStack>
       </Collapse>
     </Box>
