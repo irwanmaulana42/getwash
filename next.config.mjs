@@ -8,6 +8,13 @@ const nextConfig = {
             port: '',
           },
         ],
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'dummyimage.com',
+            port: '',
+          },
+        ],
       },    
 };
 

@@ -84,7 +84,8 @@ export default function Home() {
 
   return (
     <>
-      <Box>
+      <Box bg="linear-gradient(180deg, rgba(255,225,211,1) 0%, rgba(253,241,235,1) 33%, rgba(255,255,255,1) 100%)"
+        paddingTop={100}>
         <Grid templateColumns="repeat(12, 1fr)" gap={4}>
           <GridItem colSpan={6}>
             <Box padding={20}>
@@ -918,7 +919,7 @@ export default function Home() {
                         <EmailIcon color="gray.700" />
                       </InputLeftElement>
                       <Input
-                        placeholder="You Email"
+                        placeholder="Your Email"
                         marginRight={5}
                         backgroundColor={"#fff"}
                         boxShadow={"0 5px 8px rgba(0, 0, 0, 0.1)"}
@@ -962,43 +963,6 @@ export default function Home() {
         h={"480px"}
       >
         <Map posix={[4.79029, -75.69003]} />
-      </Box>
-
-      <Box padding={20} background={"#fdf2ef"}>
-        <Grid
-          templateColumns={{ base: "1fr", md: "repeat(12, 1fr)" }}
-          gap={4}
-          paddingBottom={10}
-        >
-          <GridItem colSpan={{ base: 12, md: 12 }}>
-            <Heading fontSize={30} fontWeight="bold" paddingBottom={5}>
-              GetWash: Kualitas Laundry, Tanpa Kompromi
-            </Heading>
-            <Text fontWeight={400} color={"gray.600"}>
-              GetWash adalah perusahaan laundry terkemuka di Tangerang yang
-              didedikasikan untuk memberikan layanan cuci, setrika, dan
-              perawatan pakaian terbaik bagi pelanggan kamu. Sejak didirikan
-              kamu telah berkembang menjadi pilihan utama bagi mereka yang
-              menginginkan hasil laundry berkualitas tinggi dengan harga yang
-              terjangkau
-            </Text>
-          </GridItem>
-        </Grid>
-        <Box display={"flex"} justifyContent={"center"}>
-          <Button
-            alignContent={"center"}
-            backgroundColor={"#f94a1f"}
-            color={"#feebe6"}
-            size="lg"
-            borderRadius={30}
-            width={"3xs"}
-            _hover={{
-              background: "#fe8a65",
-            }}
-          >
-            <Text fontSize={"md"}>Read More</Text>
-          </Button>
-        </Box>
       </Box>
     </>
   );

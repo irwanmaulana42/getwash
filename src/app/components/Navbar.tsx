@@ -25,8 +25,12 @@ const Navbar = () => {
   const laundryColor = useColorModeValue('orange.500', 'orange.300');
 
   return (
-    <Box bg={bg} px={4} py={2} shadow="md">
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+    <Box bg={bg} px={8} py={2} w={'7xl'}  borderRadius={30} shadow="lg" position="fixed" top={8} left={0} right={0} zIndex={10} opacity={0.95} mx={"auto"}>
+      <Flex
+        h={16}
+        alignItems={'center'}
+        justifyContent={'space-between'}
+      >
         {/* Logo */}
         <Flex align="center">
           <Text fontSize="2xl" fontWeight="bold" color={logoColor}>
@@ -136,6 +140,7 @@ const Navbar = () => {
         </VStack>
       </Collapse>
     </Box>
+
   );
 };
 
